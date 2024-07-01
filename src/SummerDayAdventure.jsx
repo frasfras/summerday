@@ -54,7 +54,7 @@ function SummerDayAdventure() {
 
   return (
     <div style={{ textAlign: "center", fontFamily: "Arial, sans-serif" }}>
-      <h1>Summer Day Adventure</h1>
+      <h1>☀️ Summer Day Adventure 🏖️</h1>
       <Avatar energy={energy} fun={fun} />
 
       <p>
