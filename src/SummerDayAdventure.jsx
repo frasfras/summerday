@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Avatar from "./Avatar";
 import CustomAvatar from "./CustomAvatar";
+import SoundManager from "./new/SoundManager";
 
 const activities = ["swim in the cool lake", "have a backyard barbecue", "go on a bike ride", "play frisbee in the park", "make homemade ice cream", "watch the sunset at the beach", "stargaze on a warm night"];
 
@@ -20,6 +21,7 @@ function SummerDayAdventure() {
   const handleActivity = (index) => {
     if (gameOver) return;
 
+    SoundManager.play("click");
     const energyCost = Math.floor(Math.random() * 21) + 10;
     const funGain = Math.floor(Math.random() * 11) + 15;
 
@@ -28,11 +30,15 @@ function SummerDayAdventure() {
     setMessage(`You ${activities[index]}. You spent ${energyCost} energy and gained ${funGain} fun!`);
 
     if (fun + funGain >= 100) {
+       SoundManager.play("gameOver");
       setGameOver(true);
       setMessage("Congratulations! You've had the perfect summer day!");
     } else if (energy - energyCost <= 0) {
+       SoundManager.play("gameOver");
       setGameOver(true);
       setMessage("You're too tired to continue. Time for a good night's sleep!");
+    }else {
+      SoundManager.play("complete");
     }
   };
 
